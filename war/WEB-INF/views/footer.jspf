@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<form class="mainForm" action="${pageContext.request.contextPath }" method="post">
+		<input type="hidden" name="cats" class="cats" value="${searchDTO.cats}" />
+		<input type="hidden" name="term" class="term" value="${searchDTO.term}" />
+		<input type="hidden" name="offset" class="offset" value="${searchDTO.offset}" />
+	</form>
+</body>
+<script type="text/javascript">
+$('.search-input').keypress(function(e){
+	if(e.which == 13){
+		search();
+	}
+});
+var goPage = function(){
+	var mainForm = $('.mainForm')[0];
+	mainForm.submit();
+};
+var category = function(cats){
+	$('.cats').val(cats);
+	goPage();
+}
+var search = function(){
+	$('.term').val($('.search-input').val());
+	$('.offset').val(1);
+	goPage();
+};
+</script>

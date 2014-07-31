@@ -1,0 +1,2 @@
+serviceClass: org.mirror.nyaa.client.GreetingService
+path: E43F753F50BCEAB51B9F3F47EF83872C.gwt.rpc

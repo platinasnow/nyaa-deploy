@@ -1,0 +1,69 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="user-scalable=no," initial-scale="1.0," maximum-scale="1.0">
+<title>mirror</title>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="resources/js/bootstrap.js?05"></script>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<style type="text/css">
+	.contents-wrap{margin: 51px 0 0 0;padding:0;}
+	.pagination{margin: 20px 0;}
+	.tlisticon img{width: 60px;}
+	.tlistsize{font-size: 12px;}
+	.tlistname{word-break:break-all;}
+	.pagination-wrap{text-align: center;}
+	.view-contents{min-height: 300px;}
+	.description-wrap>img{width: 100%;}
+	.down-wrap{margin: 15px 0;}
+</style>
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="javascript:goPage()">Home</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav" style="float: right;">
+					<li>
+						<div class="" style="overflow: hidden;margin: 8px 0 0 0;">
+							<div style="float: left;">
+							<input type="text" class="form-control search-input" value="${searchDTO.term}" />
+							</div>
+							<div style="float: left;">
+							<button type="button" class="btn btn-default" onclick="search()">
+							  <span class="glyphicon glyphicon-search"></span>
+							</button>
+							</div>
+						</div>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Category <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="javascript:category('')">All</a></li>
+							<li><a href="javascript:category('1_0')">Anime</a></li> 
+							<li><a href="javascript:category('3_0')">Audio</a></li> 
+							<li><a href="javascript:category('2_0')">Literature</a></li>
+							<li class="divider"></li>
+							<li><a href="javascript:category('5_0')">Live Action</a></li> 
+							<li><a href="javascript:category('6_0')">Software</a></li> 
+							<li><a href="javascript:category('4_0')">Pictures</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div><!-- nav end -->
