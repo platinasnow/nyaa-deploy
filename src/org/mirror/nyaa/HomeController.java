@@ -9,13 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.HttpResponseException;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.BasicResponseHandler;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.HttpEntity;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -25,14 +19,19 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.appengine.api.urlfetch.HTTPResponse;
+import com.google.appengine.api.urlfetch.URLFetchService;
+import com.google.appengine.api.urlfetch.URLFetchServiceFactory;
 
 
 @Controller
 public class HomeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	private static final String nyaa = "http://www.nyaa.se";
-	private static final String sukebei = "http://sukebei.nyaa.eu";
+	private static final String nyaa = "http://www.nyaa.se/";
+	private static final String sukebei = "http://sukebei.nyaa.eu/";
 
 	@RequestMapping(value = "/")
 	public String nyaa(Model model, SearchDTO searchDTO) {
@@ -45,7 +44,6 @@ public class HomeController {
 		}else{
 			
 		}
-		
 		return "index";
 	}
 	
@@ -83,23 +81,9 @@ public class HomeController {
 	}
 	
 	public Document htmlPaser(String url){
-		/*
 		try {
-			ResponseHandler<String> responseHandler = new BasicResponseHandler();
-			HttpClient httpClinet = new DefaultHttpClient();
-			HttpGet httpGet = new HttpGet(url);
-			String html = new String( httpClinet.execute(httpGet, responseHandler).getBytes("8859_1"), "UTF-8");
-			Document doc = Jsoup.parse(html);
+			URL targetUrl = new URL(url );
 			
-			return doc;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-		*/
-		
-		try {
-			URL targetUrl = new URL(url);
 			BufferedReader reader = new BufferedReader(new InputStreamReader(targetUrl.openStream(),"UTF-8"));
 			String html = reader.readLine();
 			Document doc = Jsoup.parse(html);
