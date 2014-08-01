@@ -1,7 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@include file="header.jspf" %>
+
+<c:if test="${type == 'n' }">
+	<%@include file="header.jspf" %>
+</c:if>
+<c:if test="${type == 'h' }">
+	<%@include file="h_header.jspf" %>
+</c:if>
 	<div class="contents-wrap container-fluid">
 		<table class="table table-striped">
 			${contents}
@@ -17,19 +23,19 @@
 		</ul>
 		</div>
 	</div>
-	<form class="urlForm" method="post"> 
+	<form class="urlForm" method="post" data-type="${type}">
 		<input type="hidden" name="url" class="url" />
 	</form>
 
 <%@include file="footer.jspf" %>
 <script type="text/javascript">
-
 var movePage = function(idx){
 	$('.offset').val(idx);
 	goPage();
 };
 var urlForm = $('.urlForm')[0];
-
+var type = $('.urlForm').attr('data-type');
+var actionUrl = type == 'n' ? 'v' : 'hv' 
 $(function(){
 	$('.tlistname').children('a').each(function(){
 		$(this).attr('data-url', $(this).attr('href')).removeAttr('href');

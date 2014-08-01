@@ -28,13 +28,11 @@ public class HomeController {
 	public String nyaa(Model model, SearchDTO searchDTO) {
 		String url = setUrl(searchDTO, nyaa);
 		Document doc = htmlPaser(url);
-		
 		if(doc != null){
 			model.addAttribute("contents", getContents(doc));
 			model.addAttribute("pages", getPages(doc));
-		}else{
-			
 		}
+		model.addAttribute("type","n");
 		return "index";
 	}
 	
@@ -42,13 +40,11 @@ public class HomeController {
 	public String sukebei(Model model, SearchDTO searchDTO) {
 		String url = setUrl(searchDTO, sukebei);
 		Document doc = htmlPaser(url);
-		
 		if(doc != null){
 			model.addAttribute("contents", getContents(doc));
 			model.addAttribute("pages", getPages(doc));
-		}else{
-			
 		}
+		model.addAttribute("type","h");
 		return "index";
 	}
 	
@@ -56,10 +52,21 @@ public class HomeController {
 	public String view(Model model, SearchDTO searchDTO) {
 		String url = searchDTO.getUrl()+ "&showfiles=1";
 		Document doc = htmlPaser(url);
-		
 		if(doc != null){
 			model.addAttribute("view", getViewHtml(doc));
 		}
+		model.addAttribute("wrap-color", "panel-success");
+		return "view";
+	}
+	
+	@RequestMapping(value = "/hv")
+	public String sukebeiView(Model model, SearchDTO searchDTO) {
+		String url = searchDTO.getUrl()+ "&showfiles=1";
+		Document doc = htmlPaser(url);
+		if(doc != null){
+			model.addAttribute("view", getViewHtml(doc));
+		}
+		model.addAttribute("wrap-color", "panel-danger");
 		return "view";
 	}
 	
