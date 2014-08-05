@@ -9,7 +9,7 @@
 	<%@include file="h_header.jspf" %>
 </c:if>
 	<div class="contents-wrap container-fluid">
-		<table class="table table-striped">
+		<table class="table table-striped table-hover">
 			${contents}
 		</table>
 		<div class="pagination-wrap">

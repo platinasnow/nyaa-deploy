@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="header.jspf" %>
 	<div class="contents-wrap container-fluid">
-		<div class="panel ${wrap-color }">
+		<div class="panel ${color-class} ${cc}">
 			<div class="panel-heading">
 			
 			</div>
@@ -20,7 +20,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="panel ${wrap-color }">
+		<div class="panel ${color-class} ${cc}">
 			<div class="panel-heading">Files in torrent</div>
 			<div class="panel-body ">
 				<table class="table">

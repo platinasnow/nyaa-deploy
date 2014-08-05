@@ -55,7 +55,8 @@ public class HomeController {
 		if(doc != null){
 			model.addAttribute("view", getViewHtml(doc));
 		}
-		model.addAttribute("wrap-color", "panel-success");
+		model.addAttribute("color-class", "panel-success");
+		model.addAttribute("cc", "panel-success");
 		return "view";
 	}
 	
@@ -66,13 +67,14 @@ public class HomeController {
 		if(doc != null){
 			model.addAttribute("view", getViewHtml(doc));
 		}
-		model.addAttribute("wrap-color", "panel-danger");
+		model.addAttribute("color-class", "panel-danger");
+		model.addAttribute("cc", "panel-danger");
 		return "view";
 	}
 	
 	
 	public String setUrl(SearchDTO searchDTO, String url){
-		String term = searchDTO.getTerm() == null || "".equals(searchDTO.getTerm()) ? "" : "&term="+searchDTO.getTerm();
+		String term = searchDTO.getTerm() == null || "".equals(searchDTO.getTerm()) ? "" : "&term="+searchDTO.getTerm().replaceAll(" ", "+");
 		String cats = searchDTO.getCats() == null  || "".equals(searchDTO.getCats()) ? "" : "&cats="+searchDTO.getCats();
 		String fullUrl = url+"?offset="+searchDTO.getOffset()+term+cats;
 		return fullUrl;
