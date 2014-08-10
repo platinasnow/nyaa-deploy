@@ -44,7 +44,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="javascript:goHome()">Home</a>
+				<a class="navbar-brand" href="javascript:goHome('n')">Home</a>
 				<a class="navbar-brand type-btn" href="h">Fap</a>
 			</div>
 			<div class="navbar-collapse collapse">
@@ -56,7 +56,7 @@
 							<input type="text" class="form-control search-input" value="${searchDTO.term}" />
 							</div>
 							<div style="float: left;">
-							<button type="button" class="btn btn-default" onclick="search()">
+							<button type="button" class="btn btn-default" onclick="search('n')">
 							  <span class="glyphicon glyphicon-search"></span>
 							</button>
 							</div>
