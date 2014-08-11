@@ -12,37 +12,29 @@ $('.search-input').keypress(function(e){
 		search();
 	}
 });
-var goHome = function(type){
+var goHome = function(){
 	$('.cats').val('');
 	$('.term').val('');
 	$('.offset').val(1);
-	if(type == 'n'){
-		goPage();	
-	}else{
-		goHPage();
-	}
+	goPage();	
 };
 var goPage = function(){
+	var type = $('.urlForm').attr('data-type');
 	var mainForm = $('.mainForm')[0];
+	if(type == 'h'){
+		mainForm.action='h';
+	}
 	mainForm.submit();
 };
-var goHPage = function(){
-	var mainForm = $('.mainForm')[0];
-	mainForm.action='h';
-	mainForm.submit();
-};
+
 var category = function(cats){
 	$('.cats').val(cats);
 	goPage();
 }
-var search = function(type){
+var search = function(){
 	$('.term').val($('.search-input').val());
 	$('.offset').val(1);
-	if(type == 'n'){
-		goPage();	
-	}else{
-		goHPage();
-	}
+	goPage();	
 };
 
 $('.navbar-toggle')[0].addEventListener('touchstart', function(event) {
