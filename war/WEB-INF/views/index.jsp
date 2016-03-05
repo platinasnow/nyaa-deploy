@@ -38,11 +38,11 @@ var type = $('.urlForm').attr('data-type');
 var actionUrl = type == 'n' ? 'v' : 'hv' 
 $(function(){
 	$('.tlistname').children('a').each(function(){
-		$(this).attr('data-url', $(this).attr('href')).removeAttr('href');
+		$(this).attr('data-url', $(this).attr('href').replace('//', 'https://')).removeAttr('href');
 	});
 	
-	$('.tlistname').on('click', function(){
-		var url = $(this).children('a').attr('data-url');
+	$('.tlistname>a').on('click', function(){
+		var url = $(this).attr('data-url');
 		$('.url').val(url);
 		urlForm.action='v';
 		urlForm.submit();
